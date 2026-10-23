@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>预览C：明快便签（浅色友好风）</title>
+<style>
+  :root { --ink:#2b2b33; --blue:#2563eb; --peach:#ffd9c2; --mint:#cdeede; --lemon:#fdeeb8; --lilac:#e3dcf7; }
+  * { box-sizing:border-box; margin:0; }
+  html,body { height:100%; background:#f4f2ee; font-family:"PingFang SC","Microsoft YaHei",sans-serif; }
+  #stage-wrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  #stage { width:1280px; height:720px; position:relative; transform-origin:center center; background:#fbfaf7; padding:70px 90px; }
+  .slide { position:absolute; inset:70px 90px; display:none; flex-direction:column; justify-content:center; }
+  .slide.active { display:flex; }
+  .tag { display:inline-block; width:fit-content; font-size:24px; font-weight:600; padding:8px 28px; border-radius:999px; margin-bottom:34px; }
+  .c-blue { background:var(--lemon); }
+  .c-mint { background:var(--mint); }
+  .c-peach { background:var(--peach); }
+  .c-lilac { background:var(--lilac); }
+  .q { font-size:38px; color:var(--ink); line-height:1.85; }
+  .q b { color:var(--blue); }
+  h2 { font-size:66px; color:var(--ink); line-height:1.35; margin-bottom:36px; }
+  h2 span { background:linear-gradient(transparent 62%, var(--lemon) 62%); }
+  .num { position:absolute; top:6px; right:0; font-size:22px; color:#a8a49c; }
+  .footer { position:absolute; bottom:34px; left:90px; right:90px; display:flex; justify-content:space-between; font-size:19px; color:#a8a49c; }
+  .hint { position:fixed; bottom:10px; left:50%; transform:translateX(-50%); color:#999; font-size:14px; }
+</style>
+</head>
+<body>
+<div id="stage-wrap"><div id="stage">
+
+<div class="slide active">
+  <h2>数据藏在哪？<br><span>先聊聊你自己</span></h2>
+  <div class="q">问题只是启发思路，想到什么说什么。</div>
+  <div class="num">封面</div>
+</div>
+
+<div class="slide">
+  <div class="tag c-blue">① 为什么来？</div>
+  <div class="q">是什么让你决定选这门课？最吸引你的是什么？<br><br>有没有遇到过要查数据、整理数据，<br>却<b>不知从何下手</b>的时候？</div>
+  <div class="num">1 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="tag c-mint">② 会什么、卡在哪？</div>
+  <div class="q">用过 GEO、PubMed 这类数据库吗？<br>自己下载过研究数据吗？<br><br>用过 <b>AI</b> 帮你查资料、整理表格吗？</div>
+  <div class="num">2 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="tag c-peach">③ 想用在哪？</div>
+  <div class="q">你对哪类医学问题最感兴趣？<br><br>更想学会<b>自己动手</b>，还是更想学会<b>让 AI 代劳</b>？</div>
+  <div class="num">3 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="tag c-lilac">④ 还有什么想让我知道的？</div>
+  <div class="q">有什么顾虑吗（编程、英语、难度）？<br>希望我提供什么帮助？</div>
+  <div class="num">4 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="tag c-blue">⑤ 最后 · 一个小实验</div>
+  <div class="q" style="font-size:40px;">假设活动已经结束，你向同学介绍<br>这两个小时学到了什么——<br><br>你最希望自己能<b>自信地说出哪句话</b>？</div>
+  <div class="num">5 / 5</div>
+</div>
+
+<div class="footer"><span>数据寻踪——AI解码生命 · 场次二</span><span>2026-10-24 13:00</span></div>
+</div></div>
+<div class="hint">← → 或 空格 翻页</div>
+<script>
+var slides=[].slice.call(document.querySelectorAll(".slide")),i=0;
+function go(n){if(n<0||n>=slides.length)return;slides[i].classList.remove("active");i=n;slides[i].classList.add("active");}
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown")go(i+1);
+  if(e.key==="ArrowLeft"||e.key==="PageUp")go(i-1);
+});
+function fit(){var s=Math.min(innerWidth/1280,innerHeight/720);document.getElementById("stage").style.transform="scale("+s+")";}
+addEventListener("resize",fit);fit();
+</script>
+</body>
+</html>

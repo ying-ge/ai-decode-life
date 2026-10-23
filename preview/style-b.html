@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>预览B：黑板粉笔（深色教室感）</title>
+<style>
+  :root { --board:#1f3b2c; --chalk:#f2efe4; --pink:#f4a9a0; --yellow:#e8d174; }
+  * { box-sizing:border-box; margin:0; }
+  html,body { height:100%; background:#141410; font-family:"Kaiti SC","STKaiti","KaiTi",serif; }
+  #stage-wrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
+  #stage { width:1280px; height:720px; position:relative; transform-origin:center center; background:var(--board); border:14px solid #6b4a2f; }
+  .slide { position:absolute; inset:0; padding:80px 100px; display:none; flex-direction:column; justify-content:center; }
+  .slide.active { display:flex; }
+  .kicker { font-size:28px; color:var(--yellow); margin-bottom:26px; letter-spacing:4px; }
+  .q { font-size:38px; color:var(--chalk); line-height:1.9; }
+  .q b { color:var(--pink); font-weight:normal; text-decoration:underline dashed var(--pink); text-underline-offset:10px; }
+  h2 { font-size:64px; color:var(--chalk); line-height:1.4; margin-bottom:40px; }
+  .num { position:absolute; top:44px; right:64px; font-size:26px; color:#7d9a88; }
+  .footer { position:absolute; bottom:36px; left:100px; right:100px; display:flex; justify-content:space-between; font-size:20px; color:#7d9a88; }
+  .hint { position:fixed; bottom:10px; left:50%; transform:translateX(-50%); color:#666; font-size:14px; font-family:sans-serif; }
+</style>
+</head>
+<body>
+<div id="stage-wrap"><div id="stage">
+
+<div class="slide active">
+  <div class="kicker">场次二 · 开场</div>
+  <h2>数据藏在哪？<br>先聊聊你自己</h2>
+  <div class="q">问题只是启发思路，想到什么说什么。</div>
+  <div class="num">封面</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">一 · 为什么来？</div>
+  <div class="q">是什么让你决定选这门课？最吸引你的是什么？<br><br>有没有遇到过要查数据、整理数据，<br>却<b>不知从何下手</b>的时候？</div>
+  <div class="num">1 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">二 · 会什么、卡在哪？</div>
+  <div class="q">用过 GEO、PubMed 这类数据库吗？<br>自己下载过研究数据吗？<br><br>用过 <b>AI</b> 帮你查资料、整理表格吗？</div>
+  <div class="num">2 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">三 · 想用在哪？</div>
+  <div class="q">你对哪类医学问题最感兴趣？<br><br>更想学会<b>自己动手</b>，还是更想学会<b>让 AI 代劳</b>？</div>
+  <div class="num">3 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">四 · 还有什么想让我知道的？</div>
+  <div class="q">有什么顾虑吗（编程、英语、难度）？<br>希望我提供什么帮助？</div>
+  <div class="num">4 / 5</div>
+</div>
+
+<div class="slide">
+  <div class="kicker">最后 · 一个小实验</div>
+  <div class="q" style="font-size:42px;">假设活动已经结束，你向同学介绍<br>这两个小时学到了什么——<br><br>你最希望自己能<b>自信地说出哪句话</b>？</div>
+  <div class="num">5 / 5</div>
+</div>
+
+<div class="footer"><span>数据寻踪——AI解码生命</span><span>2026-10-24 13:00</span></div>
+</div></div>
+<div class="hint">← → 或 空格 翻页</div>
+<script>
+var slides=[].slice.call(document.querySelectorAll(".slide")),i=0;
+function go(n){if(n<0||n>=slides.length)return;slides[i].classList.remove("active");i=n;slides[i].classList.add("active");}
+document.addEventListener("keydown",function(e){
+  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown")go(i+1);
+  if(e.key==="ArrowLeft"||e.key==="PageUp")go(i-1);
+});
+function fit(){var s=Math.min(innerWidth/1280,innerHeight/720);document.getElementById("stage").style.transform="scale("+s+")";}
+addEventListener("resize",fit);fit();
+</script>
+</body>
+</html>
