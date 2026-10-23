@@ -146,7 +146,7 @@ const EVENTS = [
 // ===== 技术突破事件（与数据库同规则排布，绿色）=====
  {y:1955, n:"蛋白质测序技术", w:"技术突破 · Sanger 测定胰岛素完整序列", c:"tech", lv:1, side:-1,
   d:"Sanger 用化学试剂逐个切下氨基酸、拼出胰岛素的51个残基——第一次证明蛋白质有确定的序列。此后序列数据开始积累，为 Dayhoff 的图谱提供了原料。", to:"蛋白质序列计算分析",
-  wiki:"https://en.wikipedia.org/wiki/Frederick_Sanger", wzh:"弗雷德里克·桑格",
+  wiki:"https://en.wikipedia.org/wiki/Frederick_Sanger", wzh:"弗雷德里克·桑格", img:"img/sanger.png",
   note:"Sanger 因此获得1958年诺贝尔化学奖——这是他两次诺奖中的第一次；他测的胰岛素来自屠宰场的牛胰腺，便宜而量大。"},
  {y:1962, n:"X射线晶体学成熟", w:"技术突破 · Kendrew/Perutz 1962诺奖", c:"tech", lv:1, side:-1,
   d:"把蛋白质结晶，用X射线衍射反推每个原子的位置——第一个蛋白结构花了数年才解出。拿到结构太难，成果必须集中保存共享，PDB 由此而生。", to:"Protein Data Bank",
