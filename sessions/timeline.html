@@ -301,14 +301,12 @@ for (const ev of placed) {
     tip.innerHTML=detEl.innerHTML;
     tip.style.color=getComputedStyle(ev).color;
     tip.style.display="block";
-    const r=ev.querySelector(".dot").getBoundingClientRect();
-    const w=330,h=tip.offsetHeight||150;
-    let x1=r.right+18,y1=r.top-40;
-    if(x1+w>innerWidth-12)x1=r.left-w-18;
-    if(x1<12)x1=12;
-    if(y1+h>innerHeight-12)y1=innerHeight-h-12;
-    if(y1<12)y1=12;
-    tip.style.left=x1+"px"; tip.style.top=y1+"px";
+    // 与时间之旅一致：固定右上（窄屏由媒体查询覆盖为底部抽屉）
+    tip.style.left=(innerWidth-500)+"px";
+    tip.style.top="70px";
+    tip.style.bottom="auto"; tip.style.right="auto";
+    tip.style.maxHeight=(innerHeight-100)+"px";
+    tip.style.overflowY="auto";
   }
   // 触屏/鼠标点击事件点 → 显示详情卡（hover 在触屏不可用）
   document.addEventListener("click",e=>{
