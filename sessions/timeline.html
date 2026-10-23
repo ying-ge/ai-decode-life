@@ -320,13 +320,11 @@ for (const ev of placed) {
   });
   document.addEventListener("mouseover",e=>{
     const ev=e.target.closest(".event");
-    if(ev===activeEv)return;
-    if(ev){
+    if(ev && ev!==activeEv){
       activeEv=ev;
       showFor(ev);
-    } else if(!tip.contains(e.target)){
-      tip.style.display="none"; activeEv=null;
     }
+    // 不再在移开时隐藏：卡片固定右上供阅读，用 ✕ / 点空白 / 滚动关闭
   });
   const vp=document.getElementById("viewport");
   vp.addEventListener("scroll",()=>{ if(window.__touring) return; tip.style.display="none";activeEv=null; });
