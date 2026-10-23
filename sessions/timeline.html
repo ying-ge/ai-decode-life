@@ -311,7 +311,8 @@ for (const ev of placed) {
 
 const vp=document.getElementById("viewport");
 let dragging=false,startX=0,startSL=0;
-vp.addEventListener("mousedown",e=>{dragging=true;startX=e.clientX;startSL=vp.scrollLeft;vp.classList.add("dragging");});
+vp.addEventListener("mousedown",e=>{ if(tip.contains(e.target)) return;   // 详情卡内拖动选择文本，不拖时间线
+  dragging=true;startX=e.clientX;startSL=vp.scrollLeft;vp.classList.add("dragging");});
 window.addEventListener("mousemove",e=>{if(dragging)vp.scrollLeft=startSL-(e.clientX-startX);});
 window.addEventListener("mouseup",()=>{dragging=false;vp.classList.remove("dragging");});
 vp.addEventListener("wheel",e=>{
