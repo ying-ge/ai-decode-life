@@ -170,7 +170,7 @@
 </div>
 
 <div id="viewport"><div id="timeline"><div class="axis"></div></div></div>
-<div class="hint" id="hint">← 拖动 / 滚轮滑动时间线，悬停事件点查看详情 · 时间之旅：空格暂停/继续，Esc 退出 →</div>
+<div class="hint" id="hint">← 拖动 / 滚轮滑动时间线，点按或悬停事件点查看详情 · 时间之旅：空格暂停/继续，Esc 退出 →</div>
 
 <script src="timeline-data.js"></script>
 <script>
@@ -295,24 +295,37 @@ for (const ev of placed) {
 
 (function tooltip(){
   let activeEv=null;
+  function showFor(ev){
+    const detEl=ev.querySelector(".det")||[...ev.children].find(c=>c.style.display==="none");
+    if(!detEl)return;
+    tip.innerHTML=detEl.innerHTML;
+    tip.style.color=getComputedStyle(ev).color;
+    tip.style.display="block";
+    const r=ev.querySelector(".dot").getBoundingClientRect();
+    const w=330,h=tip.offsetHeight||150;
+    let x1=r.right+18,y1=r.top-40;
+    if(x1+w>innerWidth-12)x1=r.left-w-18;
+    if(x1<12)x1=12;
+    if(y1+h>innerHeight-12)y1=innerHeight-h-12;
+    if(y1<12)y1=12;
+    tip.style.left=x1+"px"; tip.style.top=y1+"px";
+  }
+  // 触屏/鼠标点击事件点 → 显示详情卡（hover 在触屏不可用）
+  document.addEventListener("click",e=>{
+    if(tip.contains(e.target)) return;                 // 卡内点击不处理
+    if(e.target.closest("#tipClose")) return;
+    const ev=e.target.closest(".event");
+    if(ev){ activeEv=ev; showFor(ev); }
+    else if(!e.target.closest("header,.legend,.tour-ctl")){
+      tip.style.display="none"; activeEv=null;         // 点时间线空白处关闭
+    }
+  });
   document.addEventListener("mouseover",e=>{
     const ev=e.target.closest(".event");
     if(ev===activeEv)return;
     if(ev){
       activeEv=ev;
-      const detEl=ev.querySelector(".det")||[...ev.children].find(c=>c.style.display==="none");
-      if(!detEl)return;
-      tip.innerHTML=detEl.innerHTML;
-      tip.style.color=getComputedStyle(ev).color;
-      tip.style.display="block";
-      const r=ev.querySelector(".dot").getBoundingClientRect();
-      const w=330,h=tip.offsetHeight||150;
-      let x1=r.right+18,y1=r.top-40;
-      if(x1+w>innerWidth-12)x1=r.left-w-18;
-      if(x1<12)x1=12;
-      if(y1+h>innerHeight-12)y1=innerHeight-h-12;
-      if(y1<12)y1=12;
-      tip.style.left=x1+"px"; tip.style.top=y1+"px";
+      showFor(ev);
     } else if(!tip.contains(e.target)){
       tip.style.display="none"; activeEv=null;
     }
