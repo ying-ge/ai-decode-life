@@ -315,6 +315,8 @@ vp.addEventListener("mousedown",e=>{dragging=true;startX=e.clientX;startSL=vp.sc
 window.addEventListener("mousemove",e=>{if(dragging)vp.scrollLeft=startSL-(e.clientX-startX);});
 window.addEventListener("mouseup",()=>{dragging=false;vp.classList.remove("dragging");});
 vp.addEventListener("wheel",e=>{
+  // 详情卡内滚动不劫持
+  if(tip.contains(e.target)) return;
   if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){vp.scrollLeft+=e.deltaY;e.preventDefault();}
 },{passive:false});
 // ===== 图例按钮：平滑滚动到该区段第一个事件 =====
