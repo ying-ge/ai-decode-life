@@ -176,11 +176,11 @@
 <script>
 
 const CAT_COLOR = {s1:"var(--molecule)", s2:"var(--genetics)", s3:"var(--diversity)", s4:"var(--frontier)", tech:"var(--evolution)", ghost:"#9c968a"};
-const T0=1960, T1=2042, PAD_L=80, PAD_R=900, W=11000;
+const T0=1950, T1=2042, PAD_L=80, PAD_R=900, W=11000;
 const x = y => PAD_L + (y-T0)/(T1-T0)*(W-PAD_L-PAD_R);
 const tl = document.getElementById("timeline");
 
-for (let yr=1960; yr<=2040; yr+=5) {
+for (let yr=1955; yr<=2040; yr+=5) {
   const t=document.createElement("div"); t.className="tick"; t.style.left=x(yr)+"px";
   const l=document.createElement("div"); l.className="tick-label"; l.style.left=x(yr)+"px"; l.textContent=yr;
   tl.append(t,l);

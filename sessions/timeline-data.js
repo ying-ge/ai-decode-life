@@ -6,6 +6,7 @@ const EVENTS = [
 // ===== 阶段一：从生物序列到数据库（生物信息学萌芽）=====
  {y:1965, n:"蛋白质序列计算分析", w:"Dayhoff《蛋白质序列与结构图谱》", c:"s1", lv:1, side:1,
   d:"没有电脑的1965年，Dayhoff 把当时已知的65个蛋白序列抄在图谱上手工比较——这些序列里藏着演化史。生物信息学比基因组计划早了25年。",
+  tech:"Sanger 蛋白质测序法（1955）",
   note:"历史事实：生物信息学不是人类基因组计划完成后才诞生的。1960年代蛋白质序列分析就已出现计算方法。",
   wiki:"https://en.wikipedia.org/wiki/Margaret_Oakley_Dayhoff", wzh:"Margaret Dayhoff", img:"img/dayhoff.jpg"},
 
@@ -143,6 +144,10 @@ const EVENTS = [
   d:"AI 时代的数据应该是什么样？下一个节点，也许就来自今天坐在这里的某个人。"},
 
 // ===== 技术突破事件（与数据库同规则排布，绿色）=====
+ {y:1955, n:"蛋白质测序技术", w:"技术突破 · Sanger 测定胰岛素完整序列", c:"tech", lv:1, side:-1,
+  d:"Sanger 用化学试剂逐个切下氨基酸、拼出胰岛素的51个残基——第一次证明蛋白质有确定的序列。此后序列数据开始积累，为 Dayhoff 的图谱提供了原料。", to:"蛋白质序列计算分析",
+  wiki:"https://en.wikipedia.org/wiki/Sanger_protein_sequencing", wzh:"蛋白质测序",
+  note:"Sanger 因此获得1958年诺贝尔化学奖——这是他两次诺奖中的第一次；他测的胰岛素来自屠宰场的牛胰腺，便宜而量大。"},
  {y:1962, n:"X射线晶体学成熟", w:"技术突破 · Kendrew/Perutz 1962诺奖", c:"tech", lv:1, side:-1,
   d:"把蛋白质结晶，用X射线衍射反推每个原子的位置——第一个蛋白结构花了数年才解出。拿到结构太难，成果必须集中保存共享，PDB 由此而生。", to:"Protein Data Bank",
   wiki:"https://en.wikipedia.org/wiki/X-ray_crystallography", wzh:"X射线晶体学", img:"img/xray.png",
