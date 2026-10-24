@@ -211,7 +211,7 @@ TURNS.forEach(tn=>{
   pole.style.cssText="position:absolute;left:0;top:6%;bottom:22%;width:0;border:none;";
   tl.appendChild(pole);
   const badge=document.createElement("div");
-  badge.style.cssText=`position:absolute;left:${px}px;top:4%;transform:translateX(-50%);z-index:5;text-align:center;white-space:nowrap;cursor:help;`;
+  badge.style.cssText=`position:absolute;left:${px}px;top:4%;transform:translateX(-50%);z-index:5;text-align:center;white-space:nowrap;cursor:help;display:none;`;
   badge.innerHTML=`<div style="background:${tn.c};color:#fff;font-weight:700;font-size:19px;padding:5px 12px;border-radius:16px;box-shadow:0 2px 8px ${tn.c}44;">⚑ ${tn.t}</div>
     <div style="font-size:17px;color:${tn.c};font-weight:600;margin-top:3px;">${tn.s}</div>`;
   badge.addEventListener("mouseenter",()=>{
