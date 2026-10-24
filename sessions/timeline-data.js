@@ -61,7 +61,7 @@ const EVENTS = [
   note:"选流感嗜血杆菌有个实际原因：它的基因组小（1.8 Mb），先拿它验证鸟枪法可行——科学突破常常从「挑软柿子」开始。",
   wiki:"https://en.wikipedia.org/wiki/Haemophilus_influenzae", wzh:"流感嗜血杆菌", img:"img/venter.jpg"},
  {y:2000, n:"GEO 上线", w:"Gene Expression Omnibus", c:"s2", lv:1, side:1,
-  d:"以前一次实验测1个基因；微阵列一次测2万个——实验结果本身变成了需要存档的大数据。GEO 今天存着20万+个研究系列，今天课堂我们就要从里面挖一个出来。", tech:"DNA 微阵列（一次测2万个基因）",
+  d:"以前一次实验测1个基因；微阵列一次测2万个——实验结果本身变成了需要存档的大数据。GEO 现存 20 万+个研究系列，是挖掘表达数据的第一站。", tech:"DNA 微阵列（一次测2万个基因）",
   note:"GEO 存的不是一行数字：每个编号背后，是一个团队数年的实验和一份完整的科研故事。",
   wiki:"https://en.wikipedia.org/wiki/Gene_Expression_Omnibus", wzh:"GEO", img:"img/ncbi.png", site:"https://www.ncbi.nlm.nih.gov/geo/"},
  {y:2000, n:"人类基因组工作草图公布", w:"HGP + Celera 竞赛", c:"s2", lv:1, side:-1,
@@ -125,7 +125,7 @@ const EVENTS = [
   wiki:"https://en.wikipedia.org/wiki/ChatGPT", wzh:"ChatGPT", img:"img/chatgpt.png",
   note:"2023年起，Nature 调查显示超过三成研究者已在科研中使用生成式 AI——文献综述、写代码、改论文，最快的一次工具扩散。"},
  {y:2026, n:"AI Agent 科研工作平台", w:"工具演进 · 正在发生", c:"s4", lv:1, side:-1,
-  d:"BLAST 帮你搜一条序列，Galaxy 帮你跑一条流程；AI Agent 收到的是一句话——\"帮我找某个疾病的表达数据并整理好\"，它自己查库、下载、清洗、交付。工具从执行算法，到执行流程，到执行意图。这类平台正在快速涌现，本课程选用 wisp-science 作为上手的例子。",
+  d:"BLAST 帮你搜一条序列，Galaxy 帮你跑一条流程；AI Agent 收到的是一句话——\"帮我找某个疾病的表达数据并整理好\"，它自己查库、下载、清洗、交付。工具从执行算法，到执行流程，到执行意图。这类平台正在快速涌现，wisp-science 是其中可上手的一个例子。",
   note:"不是教你记住某个按钮，而是学会向 Agent 描述任务、检查它的产出——这个能力不依赖任何特定平台。",
   img:"img/wispscience.svg", site:"https://wispscience.com/"},
  {y:2025, n:"Earth BioGenome Project 加速", w:"2018年启动 · 为地球生命建基因组资源", c:"s4", lv:2, side:1,
@@ -140,8 +140,8 @@ const EVENTS = [
   d:"2026年1月发布：用 CRISPR 逐个敲低数千个基因，测10亿个细胞如何响应（是50亿细胞计划的第一期，3年）。AstraZeneca、默克、礼来等药企共建——目标是训练「虚拟细胞」AI模型、加速药物靶点验证。",
   site:"https://www.illumina.com/company/news-center/press-releases.html",
   note:"HCA 是「细胞的地图」，BCA 是「细胞的实验记录」——在地图上每个位置做 CRISPR 扰动实验，规模产业化的 Perturb-seq。"},
- {y:2035, n:"？", w:"你们来写", c:"ghost", lv:1, side:1,
-  d:"AI 时代的数据应该是什么样？下一个节点，也许就来自今天坐在这里的某个人。"},
+ {y:2035, n:"？", w:"由你来写", c:"ghost", lv:1, side:1,
+  d:"AI 时代的数据应该是什么样？时间线的下一段，也许就始于正在读这条时间线的你。"},
 
 // ===== 技术突破事件（与数据库同规则排布，绿色）=====
  {y:1955, n:"蛋白质测序技术", w:"技术突破 · Sanger 测定胰岛素完整序列", c:"tech", lv:1, side:-1,
