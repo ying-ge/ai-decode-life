@@ -163,10 +163,10 @@
 </div>
 
 <div class="tour-ctl">
-  <span id="tourBtn" class="lg-tour">▶ 时间之旅</span>
-  <span id="tourPrev" class="lg-tour" title="上一个事件">⏮ 上一个</span>
-  <span id="tourNext" class="lg-tour" title="下一个事件">下一个 ⏭</span>
-  <span id="tourSpeed" class="lg-tour" title="调整停留时间">速度：中</span>
+  <span id="tourBtn" class="lg-tour" title="时间之旅（空格暂停/继续，Esc 退出）">▶</span>
+  <span id="tourPrev" class="lg-tour" title="上一个事件">⏮</span>
+  <span id="tourNext" class="lg-tour" title="下一个事件">⏭</span>
+  <span id="tourSpeed" class="lg-tour" title="调整停留时间：中">⚙</span>
 </div>
 
 <div id="viewport"><div id="timeline"><div class="axis"></div></div></div>
@@ -397,7 +397,7 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
     setTimeout(()=>showTipFor(idx), 900);
   }
   function stop(){
-    window.__touring=false; on=false; btn.classList.remove("on"); btn.textContent="▶ 时间之旅";
+    window.__touring=false; on=false; btn.classList.remove("on"); btn.textContent="▶";
     clearInterval(timer); tip.style.display="none";
     tip.style.maxHeight=""; tip.style.overflowY="";
   }
@@ -405,13 +405,13 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
   window.addEventListener("tipclose",()=>{ if(on) stop(); });
   function start(keepIdx){
     if(!keepIdx) idx=0;
-    window.__touring=true; on=true; btn.classList.add("on"); btn.textContent="⏸ 空格暂停 · Esc 退出";
+    window.__touring=true; on=true; btn.classList.add("on"); btn.textContent="⏸";
     step(); arm();
   }
   btn.addEventListener("click",()=>{ on?stop():start(false); });
   prevBtn.addEventListener("click",()=>{ idx=prevIdx(idx); if(on){step();arm();}else{window.__touring=true;step();setTimeout(()=>{if(!on){window.__touring=false;tip.style.display="none";}},SPEEDS[spd].ms);} });
   nextBtn.addEventListener("click",()=>{ idx=nextIdx(idx); if(on){step();arm();}else{window.__touring=true;step();setTimeout(()=>{if(!on){window.__touring=false;tip.style.display="none";}},SPEEDS[spd].ms);} });
-  spdBtn.addEventListener("click",()=>{ spd=(spd+1)%SPEEDS.length; spdBtn.textContent="速度："+SPEEDS[spd].n; if(on) arm(); });
+  spdBtn.addEventListener("click",()=>{ spd=(spd+1)%SPEEDS.length; spdBtn.title="调整停留时间："+SPEEDS[spd].n; if(on) arm(); });
   window.addEventListener("keydown",e=>{
     if(e.code==="Escape" && on){ stop(); return; }   // Esc 退出导览
     if(e.code!=="Space") return;
