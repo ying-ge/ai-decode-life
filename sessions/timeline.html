@@ -369,7 +369,7 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
   const nextBtn=document.getElementById("tourNext");
   const spdBtn=document.getElementById("tourSpeed");
   const vp2=document.getElementById("viewport");
-  let timer=null, idx=0, on=false;
+  let timer=null, idx=0, on=false, paused=false;
   const seq=placed.slice();   // placed 已按年份排序
   const SPEEDS=[{n:"慢",ms:9000},{n:"中",ms:6000},{n:"快",ms:3500}];
   let spd=1;                  // 默认"中"
@@ -398,18 +398,23 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
     setTimeout(()=>showTipFor(idx), 900);
   }
   function stop(){
-    window.__touring=false; on=false; btn.classList.remove("on"); btn.textContent="▶";
+    window.__touring=false; on=false; paused=false; btn.classList.remove("on"); btn.textContent="▶";
+    btn.title="时间之旅（空格暂停/继续，Esc 退出）";
     clearInterval(timer); tip.style.display="none";
     tip.style.maxHeight=""; tip.style.overflowY="";
   }
+  function pause(){
+    on=false; paused=true; btn.textContent="▶";
+    clearInterval(timer);           // 保留当前卡片显示，不隐藏
+  }
   // 用户点详情卡上的 ✕ 时，若正在播放则一并停止导览
-  window.addEventListener("tipclose",()=>{ if(on) stop(); });
+  window.addEventListener("tipclose",()=>{ if(on||paused) stop(); });
   function start(keepIdx){
-    if(!keepIdx) idx=0;
-    window.__touring=true; on=true; btn.classList.add("on"); btn.textContent="⏸";
+    if(!keepIdx&&!paused) idx=0;
+    window.__touring=true; on=true; paused=false; btn.classList.add("on"); btn.textContent="⏸";
     step(); arm();
   }
-  btn.addEventListener("click",()=>{ on?stop():start(false); });
+  btn.addEventListener("click",()=>{ on?pause():start(true); });
   prevBtn.addEventListener("click",()=>{ idx=prevIdx(idx); if(on){step();arm();}else{window.__touring=true;step();setTimeout(()=>{if(!on){window.__touring=false;tip.style.display="none";}},SPEEDS[spd].ms);} });
   nextBtn.addEventListener("click",()=>{ idx=nextIdx(idx); if(on){step();arm();}else{window.__touring=true;step();setTimeout(()=>{if(!on){window.__touring=false;tip.style.display="none";}},SPEEDS[spd].ms);} });
   spdBtn.addEventListener("click",()=>{ spd=(spd+1)%SPEEDS.length; spdBtn.title="调整停留时间："+SPEEDS[spd].n; if(on) arm(); });
@@ -419,7 +424,7 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
     const t=e.target && e.target.tagName;
     if(t==="INPUT"||t==="TEXTAREA") return;
     e.preventDefault();
-    on?stop():start(true);   // 空格暂停/继续
+    on?pause():start(true);   // 空格暂停/继续（与按钮一致）
   });
 })();
 
