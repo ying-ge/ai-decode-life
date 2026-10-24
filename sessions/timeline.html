@@ -167,6 +167,7 @@
   <span id="tourPrev" class="lg-tour" title="上一个事件">⏮</span>
   <span id="tourNext" class="lg-tour" title="下一个事件">⏭</span>
   <span id="tourSpeed" class="lg-tour" title="调整停留时间：中">⚙</span>
+  <span id="fsBtn" class="lg-tour" title="进入/退出全屏">⛶</span>
 </div>
 
 <div id="viewport"><div id="timeline"><div class="axis"></div></div></div>
@@ -418,7 +419,19 @@ setTimeout(()=>{document.getElementById("hint").style.opacity=0;},6000);
     const t=e.target && e.target.tagName;
     if(t==="INPUT"||t==="TEXTAREA") return;
     e.preventDefault();
-    on?stop():start(true);   // 空格暂停/继续，继续时不停留在原地而是从当前 idx 接着放
+    on?stop():start(true);   // 空格暂停/继续
+  });
+})();
+
+// ===== 全屏切换 =====
+(function(){
+  const fsBtn=document.getElementById("fsBtn");
+  fsBtn.addEventListener("click",()=>{
+    if(document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(()=>{});
+  });
+  document.addEventListener("fullscreenchange",()=>{
+    fsBtn.title=document.fullscreenElement?"退出全屏":"进入全屏";
   });
 })();
 
