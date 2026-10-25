@@ -5,22 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>数据寻踪——AI解码生命</title>
 <style>
-  body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem 1rem; color: #222; line-height: 1.7; }
-  h1 { color: #1a5276; }
-  .meta { color: #666; }
-  .sessions a { display: block; margin: 0.5rem 0; padding: 0.8rem 1rem; background: #eaf2f8; border-radius: 8px; text-decoration: none; color: #1a5276; }
-  .sessions a:hover { background: #d4e6f1; }
+  :root { --board:#1f3b2c; --chalk:#f2efe4; --yellow:#e8d174; --dim:#7d9a88; }
+  * { box-sizing:border-box; margin:0; }
+  html,body { height:100%; background:var(--board); font-family:"Kaiti SC","STKaiti","KaiTi",serif; }
+  #stage-wrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; overflow:auto; }
+  #stage { width:1280px; padding:70px 80px 50px; transform-origin:top center; color:var(--chalk); }
+  h1 { font-size:52px; letter-spacing:6px; text-shadow:0 0 3px rgba(242,239,228,.25); margin-bottom:10px; }
+  .sub { font-size:22px; color:var(--dim); letter-spacing:4px; margin-bottom:44px; }
+  .sessions a { display:flex; align-items:baseline; gap:18px; text-decoration:none; color:var(--chalk); padding:16px 6px; border-bottom:1px dashed rgba(242,239,228,.22); font-size:27px; line-height:1.5; transition:background .15s; }
+  .sessions a:hover { background:rgba(242,239,228,.05); }
+  .sessions a:hover .t { color:var(--yellow); }
+  .no { font-size:21px; color:var(--yellow); letter-spacing:2px; white-space:nowrap; }
+  .t em { font-style:normal; color:var(--yellow); }
+  .d { font-size:20px; color:var(--dim); white-space:nowrap; margin-left:auto; }
 </style>
 </head>
 <body>
+<div id="stage-wrap"><div id="stage">
 <h1>数据寻踪——AI解码生命</h1>
+<div class="sub">实验室面向本科生创新创业实践开放活动</div>
 
 <div class="sessions">
-  <a href="session1/">场次一（2026-10-17 13:00）：问题从哪来——AI辅助文献检索与科研问题凝练</a>
-  <a href="session2/">场次二（2026-10-24 13:00）：数据藏在哪——公共数据库挖掘与AI辅助数据整理</a>
-  <a href="session3/">场次三（2026-10-31 13:00）：数据会说话——生物信息学分析与AI辅助科研绘图</a>
-  <a href="session4/">场次四（2026-11-07 13:00）：结论怎么立——结果解读、科研规范与成果展示</a>
+  <a href="session1/"><span class="no">壹</span><span class="t">问题从哪来——AI辅助文献检索与科研问题凝练</span><span class="d">2026-10-17 13:00</span></a>
+  <a href="session2/"><span class="no">贰</span><span class="t">数据藏在哪——公共数据库挖掘与AI辅助数据整理</span><span class="d">2026-10-24 13:00</span></a>
+  <a href="session3/"><span class="no">叁</span><span class="t">数据会说话——生物信息学分析与AI辅助科研绘图</span><span class="d">2026-10-31 13:00</span></a>
+  <a href="session4/"><span class="no">肆</span><span class="t">结论怎么立——结果解读、科研规范与成果展示</span><span class="d">2026-11-07 13:00</span></a>
+  <a href="session5/"><span class="no">加场</span><span class="t">生物技术专业专场——AI解码生命实践体验</span><span class="d">2026-10-29 15:00</span></a>
 </div>
 
+</div></div>
+
+<script>
+function fit(){var s=Math.min(innerWidth/1280,1);document.getElementById("stage").style.transform="scale("+s+")";}
+addEventListener("resize",fit);fit();
+</script>
 </body>
 </html>

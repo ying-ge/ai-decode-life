@@ -4,60 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>场次二：数据藏在哪——公共数据库挖掘与AI辅助数据整理</title>
-<style>
-  :root { --board:#1f3b2c; --chalk:#f2efe4; --pink:#f4a9a0; --yellow:#e8d174; }
-  * { box-sizing:border-box; margin:0; }
-  html,body { height:100%; background:var(--board); font-family:"Kaiti SC","STKaiti","KaiTi",serif; }
-  #stage-wrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; }
-  #stage { width:1280px; height:720px; position:relative; transform-origin:center center; background:var(--board); }
-  .slide { position:absolute; inset:0; padding:70px 36px 90px; display:none; flex-direction:column; justify-content:center; }
-  .slide.active { display:flex; }
-  .kicker { font-size:28px; color:var(--yellow); margin-bottom:24px; letter-spacing:4px; }
-  .q { font-size:36px; color:var(--chalk); line-height:1.85; }
-  .q b { color:var(--pink); font-weight:normal; text-decoration:underline dashed var(--pink); text-underline-offset:10px; }
-  h2 { font-size:62px; color:var(--chalk); line-height:1.4; margin-bottom:36px; }
-  .num { position:absolute; top:40px; right:60px; font-size:24px; color:#7d9a88; }
-  .footer { position:absolute; bottom:8px; left:36px; right:36px; display:flex; justify-content:space-between; font-size:19px; color:#7d9a88; padding-bottom:0; }
-  .footer a { color:#7d9a88; }
-  ul.q { list-style:none; }
-  ul.q li { margin-bottom:14px; padding-left:44px; position:relative; }
-  ul.q li::before { content:"✎"; position:absolute; left:0; color:var(--yellow); }
-  .small { font-size:26px; color:var(--yellow); }
-  a.link { color:var(--yellow); text-decoration:underline dashed; text-underline-offset:8px; }
-
-  /* ===== 序页：历史感 ===== */
-  .era-old .kicker { color:#c9b98a; letter-spacing:8px; }
-  .era-old .q, .era-old h2 { text-shadow:0 0 3px rgba(242,239,228,.25); }
-  .era-old h2 em, .era-old .q em { font-style:normal; color:#c9b98a; text-decoration:underline solid rgba(201,185,138,.6); text-underline-offset:12px; text-decoration-thickness:2px; }
-  .era-old::after { content:"— 壹玖捌〇 —"; position:absolute; bottom:88px; left:50%; transform:translateX(-50%); font-size:20px; letter-spacing:12px; color:rgba(201,185,138,.45); }
-  .era-old { background:linear-gradient(160deg, rgba(30,48,38,.6), rgba(20,32,24,.6)); }
-
-  /* ===== 思考页：未来感 ===== */
-  @keyframes drift { from { background-position:0 0, 0 0; } to { background-position:120px 0, 0 120px; } }
-  .era-new { background:linear-gradient(160deg, rgba(10,26,32,.7), rgba(8,20,34,.7)); }
-  .era-new::before { content:""; position:absolute; inset:0; pointer-events:none;
-    background-image:linear-gradient(rgba(94,220,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(94,220,255,.07) 1px, transparent 1px);
-    background-size:60px 60px; animation:drift 12s linear infinite; }
-  .era-new .kicker { color:#5edcff; letter-spacing:8px; }
-  .era-new h2, .era-new .q { text-shadow:0 0 12px rgba(94,220,255,.35); }
-  .era-new h2 em, .era-new .q em { font-style:normal; color:#5edcff; border-bottom:2px solid rgba(94,220,255,.5); text-shadow:0 0 16px rgba(94,220,255,.6); }
-  .era-new .num { color:#3a7f96; }
-  .era-new ul.q li::before { content:"◈"; color:#5edcff; }
-  .era-new::after { content:"— 20██ · 待书写 —"; position:absolute; bottom:88px; left:50%; transform:translateX(-50%); font-size:20px; letter-spacing:10px; color:rgba(94,220,255,.4); }
-
-  /* 开场五问同屏 */
-  .board5 { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .cell { border:2px dashed rgba(242,239,228,.28); border-radius:12px; padding:18px 24px; font-size:24px; color:var(--chalk); line-height:1.65; }
-  .cell.last { grid-column:1 / -1; border-color:rgba(232,209,116,.55); background:rgba(232,209,116,.07); display:flex; align-items:center; justify-content:space-between; gap:24px; }
-  .cell.last .ct { margin-bottom:4px; }
-  .cell.last img { width:110px; height:auto; opacity:.9; filter:drop-shadow(0 0 6px rgba(242,239,228,.25)); flex-shrink:0; }
-  .ct { font-size:26px; color:var(--yellow); margin-bottom:8px; letter-spacing:2px; }
-  .cell b, .cell.last b { color:var(--pink); font-weight:normal; text-decoration:underline dashed var(--pink); text-underline-offset:8px; }
-
-  /* 右上角时间线按钮：粉笔手写风 */
-  .timeline-btn { position:absolute; top:36px; right:60px; z-index:10; font-size:22px; color:var(--chalk); text-decoration:underline dashed rgba(242,239,228,.55); text-underline-offset:10px; letter-spacing:3px; padding:6px 10px; text-shadow:0 0 4px rgba(242,239,228,.25); transition:color .2s; }
-  .timeline-btn:hover { color:var(--yellow); text-decoration-color:var(--yellow); }
-</style>
+<link rel="stylesheet" href="../assets/board.css">
 </head>
 <body>
 <div id="stage-wrap"><div id="stage">
@@ -74,10 +21,10 @@
       你对哪类医学问题最感兴趣？更想学会<b>自己动手</b>，还是<b>让 AI 代劳</b>？</div>
     <div class="cell"><div class="ct">四 · 还有什么想让我知道的？</div>
       有什么顾虑吗（编程、英语、难度）？希望我提供什么帮助？</div>
-    <div class="cell last"><div>
-        <div class="ct">五 · 课前预言：下课后的你</div>
+    <div class="cell c5"><div>
+        <div class="ct">五 · 课前预判：下课后的你</div>
         活动结束后，你希望自己能<b>自信说出哪句话</b>？</div>
-      <img src="1792816188750.png" alt="课前预言"></div>
+      <img src="1792829768242.png" alt="课前预判"></div>
   </div>
   <a class="timeline-btn" href="https://geying.site/timeline/bioinfo/" target="_blank">▶ 时间线</a>
 </div>
@@ -85,16 +32,6 @@
 <div class="footer"><span>数据寻踪——AI解码生命</span><span>2026-10-24 13:00 · <a class="link" href="../index.html">课程主页</a></span></div>
 </div></div>
 
-<script>
-var slides=[].slice.call(document.querySelectorAll(".slide")),i=0;
-function go(n){if(n<0||n>=slides.length)return;slides[i].classList.remove("active");i=n;slides[i].classList.add("active");}
-document.addEventListener("keydown",function(e){
-  if(e.key==="ArrowRight"||e.key===" "||e.key==="PageDown")go(i+1);
-  if(e.key==="ArrowLeft"||e.key==="PageUp")go(i-1);
-});
-document.getElementById("stage").addEventListener("click",function(e){ if(e.target.tagName!=="A") go(i+1); });
-function fit(){var s=Math.min(innerWidth/1280,innerHeight/720);document.getElementById("stage").style.transform="scale("+s+")";}
-addEventListener("resize",fit);fit();
-</script>
+<script src="../assets/board.js"></script>
 </body>
 </html>
