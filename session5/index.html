@@ -1,18 +1,54 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>场次五：生物技术专业专场——AI解码生命实践体验</title>
-<link rel="stylesheet" href="../assets/board.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>场次五：生物技术专业专场——AI agent实践</title>
+<style>
+:root{--ink:#12303a;--paper:#f4f7f5;--chat:#5b7a99;--chat-bg:#e6edf3;--agent:#0f8f6f;--agent-bg:#dff2ec;--amber:#c97d12;--line:#cfdad4;--mute:#58706f}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0c1d22;overflow:hidden;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",sans-serif;color:var(--ink)}
+#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center;background:var(--paper);overflow:hidden}
+.slide{position:absolute;inset:0;padding:52px 64px 56px;display:none;flex-direction:column}
+.slide.on{display:flex}
+.dark{background:var(--ink);color:#eef6f2}
+h1{font-size:72px;line-height:1.15;font-weight:800;letter-spacing:.02em}
+h2{font-size:36px;font-weight:800;line-height:1.25;margin-bottom:8px}
+.sub{font-size:22px;color:var(--mute);margin-bottom:22px}
+.dark .sub{color:#9fc3b8}
+.pill{display:inline-block;font-size:20px;font-weight:700;padding:4px 16px;border-radius:999px}
+.p-chat{background:var(--chat-bg);color:var(--chat)}
+.p-agent{background:var(--agent-bg);color:var(--agent)}
+.cols{display:flex;gap:22px;flex:1;min-height:0}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;align-content:center;min-height:0;overflow:hidden}
+.cell{padding:16px 24px;border-radius:8px;background:#fff;border:1px solid var(--line);border-top:6px solid var(--chat);font-size:22px;line-height:1.55}
+.cell:nth-child(2){border-top-color:var(--agent)}
+.cell:nth-child(3){border-top-color:var(--agent)}
+.cell:nth-child(4){border-top-color:var(--chat)}
+.cell .ct{font-size:25px;font-weight:800;margin-bottom:6px;color:var(--ink)}
+.cell b{font-weight:800;color:var(--ink)}
+.cell.c5{grid-column:1/-1;border-top:6px solid var(--amber);background:#fff6e6;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.foot{position:absolute;left:64px;right:64px;bottom:14px;display:flex;justify-content:space-between;font-size:16px;color:#7f9a93}
+.dark .foot{color:#6f9a8f}
+#bar{position:absolute;left:0;bottom:0;height:5px;background:var(--agent);transition:width .25s}
+.toplinks{position:absolute;top:20px;right:64px;display:flex;gap:12px;font-size:17px}
+.toplinks a{color:var(--mute);text-decoration:none;border-bottom:2px dashed var(--line);padding-bottom:2px}
+.dark .toplinks a{color:#6f9a8f}
+.toplinks a:hover{color:var(--agent);border-color:var(--agent)}
+#nav{position:absolute;right:14px;bottom:46px;display:flex;gap:8px;z-index:9}
+#nav button{background:#ffffff22;color:#fff;border:1px solid #ffffff44;border-radius:6px;font-size:16px;padding:6px 12px;cursor:pointer}
+#nav button:hover,#nav button:focus-visible{background:#ffffff44;outline:2px solid #fff}
+@media print{html,body{overflow:visible}#nav{display:none}}
+</style>
 </head>
 <body>
-<div id="stage-wrap"><div id="stage">
+<div id="stage">
 
-<!-- ===== 开场访谈：一板全览 ===== -->
-<div class="slide active">
-  <div class="kicker">生物技术专业专场 · 开场 · 先聊聊天</div>
-  <div class="board5">
+<!-- 1 开场访谈 -->
+<section class="slide on">
+  <h2>开场 · 先聊聊天</h2>
+  <p class="sub">生物技术专业专场 · 五个问题，想到什么说什么。</p>
+  <div class="board">
     <div class="cell"><div class="ct">一 · 为什么来？</div>
       是什么吸引你报名这次活动？是某个<b>工具</b>、一种<b>可能性</b>、一个<b>具体问题</b>，还是单纯的<b>好奇</b>？</div>
     <div class="cell"><div class="ct">二 · 会什么、卡在哪？</div>
@@ -26,12 +62,37 @@
         活动结束时，你希望自己<b>已经能够做什么</b>，或者<b>对什么有了全新的认识</b>？</div>
     </div>
   </div>
-  <a class="timeline-btn" href="https://geying.site/timeline/bioinfo/" target="_blank">▶ 时间线</a>
+</section>
+
+<div id="nav"><button id="prev" aria-label="上一页">◀</button><button id="next" aria-label="下一页">▶</button><button id="fs" aria-label="全屏">全屏</button></div>
+<div id="bar"></div>
 </div>
 
-<div class="footer"><span>数据寻踪——AI解码生命</span><span>2026-10-29 15:00 · <a class="link" href="../index.html">课程主页</a></span></div>
-</div></div>
-
-<script src="../assets/board.js"></script>
+<script>
+const slides=[...document.querySelectorAll('.slide')],stage=document.getElementById('stage'),bar=document.getElementById('bar');
+let i=Math.max(0,Math.min(slides.length-1,(parseInt(location.hash.slice(1))||1)-1));
+function show(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach((s,k)=>s.classList.toggle('on',k===i));
+  bar.style.width=((i+1)/slides.length*100)+'%';
+  try{history.replaceState(null,'','#'+(i+1))}catch(e){}
+}
+function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform='translate(-50%,-50%) scale('+s+')'}
+slides.forEach((s,k)=>{const f=document.createElement('div');f.className='foot';f.innerHTML='<span>数据寻踪——AI agent实践 · <a class="link" href="https://geying.site/ai-decode-life/" style="color:#7f9a93">课程主页</a></span><span>2026-10-29 15:00 · '+(k+1)+' / '+slides.length+'</span>';s.appendChild(f);
+const t=document.createElement('div');t.className='toplinks';t.innerHTML='<a href="https://geying.site/ai-decode-life/session5/chat-ai-vs-agent.html" target="_blank">chat-ai-vs-agent</a><a href="https://geying.site/timeline/" target="_blank">▶ 时间线</a><a href="https://wispscience.com/" target="_blank">▶ wisp-science</a>';s.appendChild(t)});
+addEventListener('resize',fit);fit();show(i);
+addEventListener('keydown',e=>{
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();show(i-1)}
+  else if(e.key==='Home')show(0);else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='f'||e.key==='F')tf();
+});
+function tf(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen()}
+document.getElementById('prev').onclick=()=>show(i-1);
+document.getElementById('next').onclick=()=>show(i+1);
+document.getElementById('fs').onclick=tf;
+let x0=null;addEventListener('touchstart',e=>x0=e.touches[0].clientX);
+addEventListener('touchend',e=>{if(x0===null)return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>50)show(i+(d<0?1:-1));x0=null});
+</script>
 </body>
 </html>
