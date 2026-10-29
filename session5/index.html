@@ -79,7 +79,7 @@ function show(n){
 }
 function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform='translate(-50%,-50%) scale('+s+')'}
 slides.forEach((s,k)=>{const f=document.createElement('div');f.className='foot';f.innerHTML='<span>数据寻踪——AI agent实践 · <a class="link" href="https://geying.site/ai-decode-life/" style="color:#7f9a93">课程主页</a></span><span>2026-10-29 15:00 · '+(k+1)+' / '+slides.length+'</span>';s.appendChild(f);
-const t=document.createElement('div');t.className='toplinks';t.innerHTML='<a href="https://geying.site/ai-decode-life/chat-ai-vs-agent.html" target="_blank">chat-ai-vs-agent</a><a href="https://geying.site/ai-decode-life/setAPI.html" target="_blank">▶ API设置</a><a href="https://geying.site/timeline/" target="_blank">▶ 时间线</a><a href="https://wispscience.com/" target="_blank">▶ wisp-science</a>';s.appendChild(t)});
+const t=document.createElement('div');t.className='toplinks';t.innerHTML='<a href="https://geying.site/ai-decode-life/chat-ai-vs-agent.html" target="_blank">chat-ai-vs-agent</a><a href="https://geying.site/ai-decode-life/setAPI.html" target="_blank">▶ API设置</a><a href="https://llmgw.47.242.154.10.sslip.io/claim/" target="_blank">▶ API key</a><a href="https://geying.site/timeline/" target="_blank">▶ 时间线</a><a href="https://wispscience.com/" target="_blank">▶ wisp-science</a>';s.appendChild(t)});
 addEventListener('resize',fit);fit();show(i);
 addEventListener('keydown',e=>{
   if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();show(i+1)}
