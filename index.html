@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>数据寻踪——AI解码生命</title>
 <style>
-  :root { --board:#1f3b2c; --chalk:#f2efe4; --yellow:#e8d174; --dim:#7d9a88; }
-  * { box-sizing:border-box; margin:0; }
-  html,body { height:100%; background:var(--board); font-family:"Kaiti SC","STKaiti","KaiTi",serif; }
-  #stage-wrap { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; overflow:auto; }
-  #stage { width:1280px; padding:70px 80px 50px; transform-origin:top center; color:var(--chalk); }
-  h1 { font-size:52px; letter-spacing:6px; text-shadow:0 0 3px rgba(242,239,228,.25); margin-bottom:10px; }
-  .sub { font-size:22px; color:var(--dim); letter-spacing:4px; margin-bottom:44px; }
-  .sessions a { display:flex; align-items:baseline; gap:18px; text-decoration:none; color:var(--chalk); padding:16px 6px; border-bottom:1px dashed rgba(242,239,228,.22); font-size:27px; line-height:1.5; transition:background .15s; }
-  .sessions a:hover { background:rgba(242,239,228,.05); }
-  .sessions a:hover .t { color:var(--yellow); }
-  .no { font-size:21px; color:var(--yellow); letter-spacing:2px; white-space:nowrap; }
-  .t em { font-style:normal; color:var(--yellow); }
-  .d { font-size:20px; color:var(--dim); white-space:nowrap; margin-left:auto; }
+:root{--ink:#12303a;--paper:#f4f7f5;--chat:#5b7a99;--chat-bg:#e6edf3;--agent:#0f8f6f;--agent-bg:#dff2ec;--amber:#c97d12;--line:#cfdad4;--mute:#58706f}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:#0c1d22;font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC","Source Han Sans SC",sans-serif;color:var(--ink)}
+#stage-wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:auto}
+#stage{width:1080px;background:var(--paper);border-radius:12px;padding:56px 64px 48px}
+h1{font-size:44px;font-weight:800;letter-spacing:.02em;margin-bottom:8px}
+.sub{font-size:21px;color:var(--mute);margin-bottom:28px}
+.sessions{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.sessions a{display:flex;align-items:baseline;gap:14px;text-decoration:none;color:var(--ink);padding:18px 22px;border-radius:8px;background:#fff;border:1px solid var(--line);border-left:6px solid var(--chat);font-size:22px;line-height:1.5;transition:border-color .15s,background .15s}
+.sessions a:nth-child(even){border-left-color:var(--agent)}
+.sessions a:hover{background:var(--chat-bg)}
+.sessions a:nth-child(even):hover{background:var(--agent-bg)}
+.no{font-size:18px;font-weight:700;color:var(--chat);white-space:nowrap}
+.sessions a:nth-child(even) .no{color:var(--agent)}
+.t em{font-style:normal;font-weight:800}
+.d{font-size:16px;color:var(--mute);white-space:nowrap;margin-left:auto}
+@media(max-width:760px){.sessions{grid-template-columns:1fr}.d{display:none}}
 </style>
 </head>
 <body>
@@ -26,18 +30,13 @@
 <div class="sub">实验室面向本科生创新创业实践开放活动</div>
 
 <div class="sessions">
-  <a href="session1/"><span class="no">壹</span><span class="t">问题从哪来——AI辅助文献检索与科研问题凝练</span><span class="d">2026-10-17 13:00</span></a>
-  <a href="session2/"><span class="no">贰</span><span class="t">数据藏在哪——公共数据库挖掘与AI辅助数据整理</span><span class="d">2026-10-24 13:00</span></a>
-  <a href="session3/"><span class="no">叁</span><span class="t">数据会说话——生物信息学分析与AI辅助科研绘图</span><span class="d">2026-10-31 13:00</span></a>
-  <a href="session4/"><span class="no">肆</span><span class="t">结论怎么立——结果解读、科研规范与成果展示</span><span class="d">2026-11-07 13:00</span></a>
-  <a href="session5/"><span class="no">加场</span><span class="t">生物技术专业专场——AI agent实践</span><span class="d">2026-10-29 15:00</span></a>
+  <a href="session1/"><span class="no">场次一</span><span class="t">问题从哪来——AI辅助<em>文献检索</em>与<em>科研问题凝练</em></span><span class="d">2026-10-17 13:00</span></a>
+  <a href="session2/"><span class="no">场次二</span><span class="t">数据藏在哪——<em>公共数据库</em>挖掘与AI辅助<em>数据整理</em></span><span class="d">2026-10-24 13:00</span></a>
+  <a href="session3/"><span class="no">场次三</span><span class="t">数据会说话——<em>生物信息学分析</em>与AI辅助<em>科研绘图</em></span><span class="d">2026-10-31 13:00</span></a>
+  <a href="session4/"><span class="no">场次四</span><span class="t">结论怎么立——<em>结果解读</em>、<em>科研规范</em>与成果展示</span><span class="d">2026-11-07 13:00</span></a>
+  <a href="session5/" style="border-left-color:var(--amber);grid-column:1/-1"><span class="no" style="color:var(--amber)">加场</span><span class="t">生物技术专业专场——AI <em>agent</em> 实践</span><span class="d">2026-10-29 15:00</span></a>
 </div>
 
 </div></div>
-
-<script>
-function fit(){var s=Math.min(innerWidth/1280,1);document.getElementById("stage").style.transform="scale("+s+")";}
-addEventListener("resize",fit);fit();
-</script>
 </body>
 </html>
