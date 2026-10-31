@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>康复治疗学领域公认优质数据库导航</title>
+<style>
+  :root {
+    --primary: #1a6fb5;
+    --primary-dark: #14568c;
+    --bg: #f5f8fb;
+    --card: #ffffff;
+    --text: #2c3e50;
+    --muted: #6b7a8c;
+    --tag-bg: #e8f1f9;
+    --free: #1e8e5a;
+    --paid: #c0392b;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    padding: 2rem 1rem;
+  }
+  .container { max-width: 1000px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2.5rem; }
+  header h1 { color: var(--primary); font-size: 1.8rem; margin-bottom: .4rem; }
+  header p { color: var(--muted); font-size: .95rem; }
+
+  h2.category {
+    font-size: 1.15rem;
+    color: var(--primary-dark);
+    margin: 2rem 0 1rem;
+    padding-left: .6rem;
+    border-left: 4px solid var(--primary);
+  }
+
+  .card {
+    background: var(--card);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(26,111,181,.08);
+    padding: 1.1rem 1.3rem;
+    margin-bottom: .9rem;
+    transition: box-shadow .2s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(26,111,181,.18); }
+  .card-top { display: flex; align-items: baseline; flex-wrap: wrap; gap: .5rem; }
+  .card-top a {
+    color: var(--primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .card-top a:hover { text-decoration: underline; }
+  .url { color: var(--muted); font-size: .8rem; word-break: break-all; }
+  .tags { margin-left: auto; display: flex; gap: .4rem; }
+  .tag {
+    font-size: .72rem;
+    padding: .1rem .55rem;
+    border-radius: 999px;
+    background: var(--tag-bg);
+    color: var(--primary-dark);
+    white-space: nowrap;
+  }
+  .tag.free { background: #e5f6ee; color: var(--free); }
+  .tag.paid { background: #fbe9e7; color: var(--paid); }
+  .desc { margin-top: .45rem; font-size: .92rem; color: #4a5a6a; }
+
+  .highlight { border-left: 4px solid var(--free); }
+  .note {
+    background: #fff8e6;
+    border: 1px solid #f0dca8;
+    border-radius: 10px;
+    padding: 1rem 1.3rem;
+    margin-top: 2rem;
+    font-size: .92rem;
+  }
+  .note strong { color: #9c6b00; }
+  footer { text-align: center; color: var(--muted); font-size: .8rem; margin-top: 2.5rem; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>康复治疗学领域公认优质数据库导航</h1>
+  <p>Rehabilitation / Physical Therapy / Occupational Therapy / Speech-Language Therapy &nbsp;·&nbsp; 点击名称直达官网</p>
+</header>
+
+<!-- 一、文献型数据库 -->
+<h2 class="category">一、文献型数据库</h2>
+
+<div class="card highlight">
+  <div class="card-top">
+    <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank">PubMed / MEDLINE</a>
+    <span class="url">pubmed.ncbi.nlm.nih.gov</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">免费最核心的入口,康复医学文献覆盖最广。配合 MeSH 词 <em>Rehabilitation</em>、<em>Physical Therapy Modalities</em> 等检索。</p>
+</div>
+
+<div class="card highlight">
+  <div class="card-top">
+    <a href="https://pedro.org.au/" target="_blank">PEDro(Physiotherapy Evidence Database)</a>
+    <span class="url">pedro.org.au</span>
+    <span class="tags"><span class="tag free">免费</span><span class="tag">物理治疗首选</span></span>
+  </div>
+  <p class="desc"><strong>物理治疗领域最权威的循证数据库</strong>,由悉尼大学维护,专门收录 RCT 和系统综述,并为每篇 RCT 打方法学质量分(PEDro score),业内公认必查。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.ebsco.com/products/research-databases/cinahl-databases" target="_blank">CINAHL(EBSCO)</a>
+    <span class="url">ebsco.com/products/research-databases/cinahl-databases</span>
+    <span class="tags"><span class="tag paid">订阅</span></span>
+  </div>
+  <p class="desc">护理与康复辅助专业(PT/OT/ST)覆盖远超 MEDLINE,收录大量实践类期刊,作业治疗、言语治疗检索必备。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.cochranelibrary.com/" target="_blank">Cochrane Library</a>
+    <span class="url">cochranelibrary.com</span>
+    <span class="tags"><span class="tag free">摘要免费</span></span>
+  </div>
+  <p class="desc">系统综述金标准,康复干预疗效证据的首选来源。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.embase.com/" target="_blank">Embase</a>
+    <span class="url">embase.com</span>
+    <span class="tags"><span class="tag paid">订阅</span></span>
+  </div>
+  <p class="desc">欧洲文献、药物相关康复研究覆盖更好,与 PubMed 互补。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://otseeker.com/" target="_blank">OTseeker</a>
+    <span class="url">otseeker.com</span>
+    <span class="tags"><span class="tag free">免费</span><span class="tag">作业治疗</span></span>
+  </div>
+  <p class="desc">作业治疗专属循证数据库,定位类似 PEDro,收录 OT 相关 RCT 与系统综述并评级。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.speechbite.com/" target="_blank">speechBITE</a>
+    <span class="url">speechbite.com</span>
+    <span class="tags"><span class="tag free">免费</span><span class="tag">言语治疗</span></span>
+  </div>
+  <p class="desc">言语病理学(Speech Pathology)专属循证数据库,澳大利亚团队维护。</p>
+</div>
+
+<!-- 二、指南与临床决策 -->
+<h2 class="category">二、指南与临床决策</h2>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.nice.org.uk/" target="_blank">NICE Guidelines</a>
+    <span class="url">nice.org.uk</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">英国国家卫生与临床优化研究所,康复路径相关指南质量高。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.apta.org/" target="_blank">APTA(美国物理治疗协会)</a>
+    <span class="url">apta.org</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">临床实践指南(CPG)权威来源,如全膝关节置换物理治疗指南 2026 修订版即出自 APTA 下属骨科物理治疗学会(<a href="https://www.orthopt.org/" target="_blank">Academy of Orthopaedic Physical Therapy</a>)。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.stroke.org/" target="_blank">AHA/ASA 脑卒中指南</a>
+    <span class="url">stroke.org · professional.heart.org</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">美国心脏协会/卒中协会发布的脑卒中康复与恢复指南(如 2026 版成人脑卒中康复指南)。</p>
+</div>
+
+<!-- 三、测量与评估工具类 -->
+<h2 class="category">三、测量与评估工具类(康复特色)</h2>
+
+<div class="card highlight">
+  <div class="card-top">
+    <a href="https://www.sralab.org/rehabilitation-measures" target="_blank">Rehabilitation Measures Database</a>
+    <span class="url">sralab.org/rehabilitation-measures</span>
+    <span class="tags"><span class="tag free">免费</span><span class="tag">评定量表标杆</span></span>
+  </div>
+  <p class="desc">由 Shirley Ryan AbilityLab 维护,<strong>康复评定量表数据库的标杆</strong>。收录 Berg 平衡量表、Fugl-Meyer、Barthel 指数等数百个量表的信效度、最小临床重要差异(MCID)及版权获取方式,临床评定与科研选量表必备。</p>
+</div>
+
+<!-- 四、数据与注册平台 -->
+<h2 class="category">四、数据与注册平台</h2>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://clinicaltrials.gov/" target="_blank">ClinicalTrials.gov</a>
+    <span class="url">clinicaltrials.gov</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">康复 RCT 注册与在研项目检索平台。</p>
+</div>
+
+<div class="card">
+  <div class="card-top">
+    <a href="https://www.anzctr.org.au/" target="_blank">ANZCTR(澳大利亚-新西兰临床试验注册)</a>
+    <span class="url">anzctr.org.au</span>
+    <span class="tags"><span class="tag free">免费</span></span>
+  </div>
+  <p class="desc">康复研究领域活跃的地区性试验注册平台。</p>
+</div>
+
+<div class="note">
+  <strong>💡 本科创新实践项目推荐组合:</strong><br>
+  做循证综述用 <strong>PubMed + PEDro + Cochrane</strong>(全部免费);涉及作业治疗加 <strong>OTseeker</strong>,言语治疗加 <strong>speechBITE</strong>;选评定量表直接查 <strong>Rehabilitation Measures Database</strong>。这一套免费资源即可覆盖领域内约 90% 的循证需求。
+</div>
+
+<footer>康复治疗学数据库导航 · 绿色标签为免费资源 · 链接直通各数据库官网</footer>
+
+</div>
+</body>
+</html>
