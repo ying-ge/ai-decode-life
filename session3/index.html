@@ -20,7 +20,7 @@ h2{font-size:36px;font-weight:800;line-height:1.25;margin-bottom:8px}
 .cell .ct{font-size:25px;font-weight:800;margin-bottom:6px;color:var(--ink)}
 .cell b{font-weight:800;color:var(--ink)}
 .cell.c5{grid-column:1/-1;border-top:6px solid var(--amber);background:#fff6e6;display:flex;align-items:center;justify-content:space-between;gap:24px}
-.cell.c5 img{max-height:110px;max-width:320px;border-radius:6px;cursor:zoom-in}
+.cell.c5 img{max-height:110px;max-width:320px;border-radius:6px}
 #lightbox{position:fixed;inset:0;background:rgba(6,20,24,.88);display:none;align-items:center;justify-content:center;cursor:zoom-out;z-index:99}
 #lightbox.on{display:flex}
 #lightbox img{max-width:92vw;max-height:92vh;border-radius:8px;box-shadow:0 12px 48px rgba(0,0,0,.5)}
@@ -48,12 +48,11 @@ h2{font-size:36px;font-weight:800;line-height:1.25;margin-bottom:8px}
     <div class="cell c5"><div>
         <div class="ct">五 · 课前预言：下课后的你</div>
         活动结束时，你希望自己<b>已经能够做什么</b>，或者<b>对什么有了全新的认识</b>？</div>
-      <img src="1792829742786.png" alt="课前预言" onclick="showLb('1792829742786.png')">
-      <button type="button" onclick="showLb('bf16c075-537f-4725-b50a-f2bf77ded652.png')" style="margin-left:14px;padding:8px 18px;border-radius:8px;border:1px solid var(--amber);background:#fff;color:var(--amber);font-size:18px;font-weight:700;cursor:pointer;font-family:inherit">查看大图</button></div>
+      <button type="button" onclick="showLb('bf16c075-537f-4725-b50a-f2bf77ded652.png')" style="padding:10px 22px;border-radius:8px;border:1px solid var(--amber);background:#fff;color:var(--amber);font-size:18px;font-weight:700;cursor:pointer;font-family:inherit;white-space:nowrap">抉择</button></div>
   </div>
-  <div id="lightbox" onclick="this.classList.remove('on')"><img id="lbimg" src="" alt="大图"></div>
   <div class="toplinks"><a href="https://geying.site/ai-decode-life/Rehabilitation.html" target="_blank">Rehabilitation</a><a href="https://geying.site/ai-decode-life/setAPI.html" target="_blank">▶ API设置</a><a href="https://llmgw.47.242.154.10.sslip.io/claim/" target="_blank">▶ API key</a><a href="https://geying.site/timeline/" target="_blank">▶ 时间线</a><a href="https://wispscience.com/" target="_blank">▶ wisp-science</a></div>
   <div class="foot"><span>数据寻踪——AI解码生命 · <a href="../index.html">课程主页</a></span><span>2026-10-31 13:00</span></div>
+  <div id="lightbox" onclick="this.classList.remove('on')"><img id="lbimg" src="" alt="大图"></div>
 </section>
 </div>
 <script>
